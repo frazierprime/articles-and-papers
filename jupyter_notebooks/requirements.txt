@@ -1,6 +1,0 @@
-jupyterlab
-gravipy
-numpy
-matplotlib
-pandas
-sympy
