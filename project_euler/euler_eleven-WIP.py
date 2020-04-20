@@ -1,10 +1,15 @@
-#!/usr/bin/env
+#!/usr/bin/env python3
 
 import numpy
 
-# In the 20×20 grid below, four numbers along a diagonal line have been marked with double quotes.
+# In the 20X20 grid below, four numbers along a diagonal line have been marked with double quotes.
 
-COMPOSITE_LIST = numpy.array([[8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8],
+# The product of these numbers is 26 * 63 * 78 * 14 = 1788696.
+
+# What is the greatest product of four adjacent numbers in the same direction (up, down, left, right, or diagonally) in the 20X20 grid?
+
+COMPOSITE_LIST = [
+[8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8],
 [49, 49, 99, 40, 17, 81, 18, 57, 60, 87, 17, 40, 98, 43, 69, 48, 4, 56, 62, 0],
 [81, 49, 31, 73, 55, 79, 14, 29, 93, 71, 40, 67, 53, 88, 30, 3, 49, 13, 36, 65],
 [52, 70, 95, 23, 4, 60, 11, 42, 69, 24, 68, 56, 1, 32, 56, 71, 37, 2, 36, 91],
@@ -23,16 +28,41 @@ COMPOSITE_LIST = numpy.array([[8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 
 [4, 42, 16, 73, 38, 25, 39, 11, 24, 94, 72, 18, 8, 46, 29, 32, 40, 62, 76, 36],
 [20, 69, 36, 41, 72, 30, 23, 88, 34, 62, 99, 69, 82, 67, 59, 85, 74, 4, 36, 16],
 [20, 73, 35, 29, 78, 31, 90, 1, 74, 31, 49, 71, 48, 86, 81, 16, 23, 57, 5, 54],
-[1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]])
+[1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
+]
 
-# The product of these numbers is 26 × 63 × 78 × 14 = 1788696.
+# We could just set each of these two values to 20, but better to tie it to the actual values upon which we are operating. 
+WIDTH = len(COMPOSITE_LIST[0])
+HEIGHT = len(COMPOSITE_LIST)
 
-# What is the greatest product of four adjacent numbers in the same direction (up, down, left, right, or diagonally) in the 20×20 grid?
+# Multiply the four numbers selected for evaluation.
+x = lambda a, b, c, d: a * b * c * d
 
+CONSECUTIVE = 4
 DIMENSION = 20
 
-print(COMPOSITE_LIST)
+def grid_product(ox, oy, dx, dy):
+	result = 1
+	print(f'Inside of grid_product. Members for evaluation: ox: {ox} oy: {oy} dx: {dx} dy: {dy}')
+	for i in range(CONSECUTIVE):
+		result *= COMPOSITE_LIST[oy + i * dy][ox + i * dx]
+	return result
 
-# def find_greatest_product():
+def find_greatest_product():
+	answer = -1
+	for y in range(HEIGHT):
+		for x in range(WIDTH):
+			if x + CONSECUTIVE <= WIDTH:
+				# Either return the product from the current position, or return the current answer. whichever is higher.
+				answer = max(grid_product(x, y, 1, 0), answer)
+			if y + CONSECUTIVE <= HEIGHT:
+				answer = max(grid_product(x, y, 0, 1), answer)
+			if x + CONSECUTIVE <= WIDTH and y + CONSECUTIVE <= HEIGHT:
+				answer = max(grid_product(x, y, 1, 1), answer)
+			if x - CONSECUTIVE >= -1 and y + CONSECUTIVE <= HEIGHT:
+				answer = max(grid_product(x, y, -1, 1), answer)
+	return answer
 
-
+if __name__ == '__main__':
+	print(find_greatest_product())
+	
