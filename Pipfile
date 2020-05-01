@@ -15,6 +15,7 @@ pandas = "*"
 bleach = "==3.1.4"
 scipy = "*"
 pyspark-hyperloglog = "*"
+jplephem = "*"
 
 [requires]
 python_version = "3.7"
