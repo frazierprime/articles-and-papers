@@ -1,0 +1,13 @@
+bleach
+gravipy
+jplephem
+jupyterlab
+jupyter_spark
+sympy
+matplotlib
+numpy
+pandas
+pymc3
+pyspark-hyperloglog
+scipy
+seaborn
