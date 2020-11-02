@@ -4,10 +4,9 @@
 
 # What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
 
-# Turns out I was on the right track with this approach, but not quite fully thinking it through.
-
 from functools import reduce
 
+# TODO: Refactor the prime number test code into its own helper module.
 from euler_three import is_prime_number_test
 
 def gcd(a: int, b: int):
@@ -34,5 +33,3 @@ if __name__ == "__main__":
 	# This turned out to be VERY handy. We call get_lcm on each item in the range(1, 20)
 	LCM = reduce(lambda x, y: get_lcm(x, y), RANGED_LIST)
 	print(LCM)
-
-

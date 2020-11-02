@@ -14,6 +14,7 @@ def is_prime_number_test(num_to_check):
 	if num_to_check <= 1:
 		return False
 
+    # If num_to_check == 2 OR 3.     
 	if num_to_check <= 3:
 		return True
 
@@ -24,6 +25,11 @@ def is_prime_number_test(num_to_check):
 	while i * i <= num_to_check:
 		if num_to_check % i == 0 or num_to_check % (i + 2) == 0:
 			return False
+		# Why 6?
+		# Our starting value for this control flow is 5, after we validate that i is
+		# not a factor of num_to_check, we advance to 11, then 17, then 23, then 29.
+		# 6 is simply an optimal incrementer for not having to scan every real number
+		# to check if they are a factor of num to check.
 		i = i + 6
 
 	return True
@@ -71,4 +77,3 @@ if __name__ == "__main__":
 		print('is result prime factor: {}'.format(True))
 	else:
 		pass
-
