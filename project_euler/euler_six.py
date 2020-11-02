@@ -16,21 +16,25 @@ TEST_MAX_RANGE = 10
 # The value to test that satisfies euler #6.
 MAX_RANGE_TO_TEST = 100
 
-def get_values_and_diff(max_range_to_sum):
+
+
+def get_values(max_range_to_sum):
 	sum_of_squares = 0
 	sum_of_values = 0
 	for i in range(1, max_range_to_sum + 1):
 		sum_of_values += i
 		sum_of_squares += i**2
 
-	return sum_of_values**2 - sum_of_squares
+	return sum_of_values**2, sum_of_squares
 
 def test_problem_example_parameters():
-	diff = get_values_and_diff(TEST_MAX_RANGE)
+	sum_of_values_squared, sum_of_squares = get_values(TEST_MAX_RANGE)
+	diff = sum_of_values_squared - sum_of_squares
 	assert diff == 2640
 
 def test_problem_solution():
-	diff = get_values_and_diff(MAX_RANGE_TO_TEST)
+	sum_of_values_squared, sum_of_squares = get_values(MAX_RANGE_TO_TEST)
+	diff = sum_of_values_squared - sum_of_squares
 	assert diff == 25164150
 
 if __name__ == "__main__":
