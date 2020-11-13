@@ -4,12 +4,6 @@
 
 # Find the largest palindrome made from the product of two 3-digit numbers.
 
-# the largest three digit number is 999, so maybe we can work backwards from there, multiplying 999 by other three digit numbers. 
-# Once we hit a palindrome, we can assume that is the largest palindrome for two, three digit numbers.
-# Problem with this implementation: requires a call to palindrome test every time a product is produced. This seems very inefficient.
-
-
-
 MAX_NUMBER_TO_TEST = 999
 MIN_NUMBER_TO_TEST = 100
 TEN = 10
@@ -32,7 +26,7 @@ def check_for_palindrome(num_to_test):
 		# The remainder of this operation will be the last digit in the integer.
 		temp = num_to_test % TEN
 
-		# Ensure that temp is appended to the end of our new integer by shifting the last "temp" into the tens column, and putting the new reverse into the ones column.
+		# Ensure that temp is appended to the end of our new integer by shifting the last "temp" into the tens column, and putting the new reverse into the "ones" column.
 		reverse = (reverse * TEN) + temp
 
 		# Divide our num_to_test by ten to remove the last digit.
@@ -56,7 +50,3 @@ def find_largest_palindrome_product():
 if __name__ == "__main__":
 	palindrome_data = find_largest_palindrome_product()
 	print('largest palindrome: {}\nIs a product of: {} and {}'.format(palindrome_data[2], palindrome_data[0], palindrome_data[1]))
-
-
-
-

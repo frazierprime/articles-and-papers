@@ -5,10 +5,12 @@
 
 # O(log n)
 def sum_even_numbers():
+    # Set the starting values for current, next, and resulting terms.     
 	current_term = 0
 	next_term = 1
 	resulting_term = 0
-
+    
+    # Keep a running sum of the even-valued fib terms.
 	sum_of_evens = 0
 
 	while resulting_term <= 4000000:
