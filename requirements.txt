@@ -1,4 +1,5 @@
 bleach
+fletcher
 gravipy
 jplephem
 jupyterlab
@@ -7,6 +8,7 @@ sympy
 matplotlib
 numpy
 pandas
+pyarrow
 pymc3
 pyspark-hyperloglog
 scikit-learn
