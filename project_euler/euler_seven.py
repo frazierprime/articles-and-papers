@@ -9,7 +9,6 @@ from euler_three import is_prime_number_test
 MAX_RANGE_TO_CHECK = 300000
 
 # Time to break out the sieve of eratosthenes.
-
 def get_prime_terms_for_range(range_to_check):
 
 	terms_array = [True] * (range_to_check + 1)
