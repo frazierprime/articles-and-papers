@@ -1,11 +1,14 @@
 bleach
+dask
 fletcher
 gravipy
+jellyfish
 jplephem
 jupyterlab
 jupyter_spark
 sympy
 matplotlib
+numba
 numpy
 pandas
 pyarrow
